@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import NotificationBell from '../notifications/NotificationBell';
 
 const navLinks = [
   { label: "Products", href: "#products" },
@@ -55,6 +56,7 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            <NotificationBell />
             <a href="#" className="text-sm font-medium text-[#425466] hover:text-[#0A2540] px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors border border-[#D1D9E0]">
               Sign in
             </a>

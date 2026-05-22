@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, AlertTriangle, Clock, DollarSign } from 'lucide-react';
-import { useDashboardData } from './useDashboardData';
+import { useDashboard } from './DashboardContext';
 
 function Card({ icon: Icon, label, value, sub, color, delay }) {
   return (
@@ -24,7 +24,7 @@ function Card({ icon: Icon, label, value, sub, color, delay }) {
 }
 
 export default function MetricCards() {
-  const { totals } = useDashboardData();
+  const { totals } = useDashboard();
 
   const cards = [
     {

@@ -12,6 +12,7 @@ import AdminUserDetail from './pages/AdminUserDetail';
 import Support from './pages/Support';
 import AdminSupport from './pages/AdminSupport';
 import Webhooks from './pages/Webhooks';
+import ApiExplorer from './pages/ApiExplorer';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -47,6 +48,7 @@ const AuthenticatedApp = () => {
       <Route path="/support" element={<Support />} />
       <Route path="/admin/support" element={<AdminSupport />} />
       <Route path="/webhooks" element={<Webhooks />} />
+      <Route path="/api-explorer" element={<ApiExplorer />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

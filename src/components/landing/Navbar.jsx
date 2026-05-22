@@ -31,13 +31,15 @@ export default function Navbar() {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex items-center justify-between h-[70px]">
           {/* Logo */}
-          <a href="#" className="flex items-center">
-            <svg viewBox="0 0 60 25" className="w-14 h-auto" fill="none">
-              <text x="0" y="20" fontFamily="Inter, sans-serif" fontWeight="900" fontSize="22" fill="#0A2540">
-                FlutterStack
-              </text>
-            </svg>
-            <span className="text-[22px] font-black tracking-tight text-[#0A2540]">FlutterStack</span>
+          <a href="#" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-[#635BFF] flex items-center justify-center shadow-sm flex-shrink-0">
+              <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+                <path d="M12 2L3 7l9 5 9-5-9-5z" fill="white" fillOpacity="0.9"/>
+                <path d="M3 12l9 5 9-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 17l9 5 9-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.6"/>
+              </svg>
+            </div>
+            <span className="text-[20px] font-black tracking-tight text-[#0A2540]">AgenticPay <span className="text-[#635BFF]">AI</span></span>
           </a>
 
           {/* Desktop Nav */}

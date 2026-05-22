@@ -1,41 +1,36 @@
 import React from 'react';
-import { Zap } from "lucide-react";
 
 const footerLinks = {
-  Product: ["Features", "Pricing", "Integrations", "Changelog", "Roadmap"],
-  Developers: ["Documentation", "API Reference", "SDKs", "Examples", "Status"],
-  Company: ["About", "Blog", "Careers", "Press", "Partners"],
-  Legal: ["Privacy", "Terms", "Security", "GDPR"],
+  Products: ["Payments", "Billing", "Connect", "Radar", "Issuing", "Terminal", "Identity", "Climate"],
+  Solutions: ["Enterprise", "Startups", "E-commerce", "SaaS", "Marketplaces", "Creator Economy"],
+  Developers: ["Documentation", "API Reference", "API Status", "API Changelog", "Build with AI"],
+  Company: ["About Stripe", "Customers", "Jobs", "Newsroom", "Stripe Press", "Stripe Sessions"],
+  Help: ["Support Center", "Support Plans", "Guides", "Contact Us"],
 };
 
 export default function FooterSection() {
   return (
-    <footer className="border-t border-border bg-card/50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
+    <footer className="bg-[#0A2540] border-t border-white/10">
+      <div className="max-w-[1200px] mx-auto px-6 py-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 mb-14">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <a href="#" className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-white" />
-              </div>
-              <span className="text-lg font-bold tracking-tight">
-                Flutter<span className="text-primary">Stack</span>
-              </span>
-            </a>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              The full-stack platform for Flutter developers.
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
+            <div className="text-[22px] font-black text-white tracking-tight mb-3">
+              Flutter<span className="text-[#635BFF]">Stack</span>
+            </div>
+            <p className="text-sm text-[#8898AA] leading-relaxed">
+              Financial infrastructure for the internet.
             </p>
           </div>
 
           {/* Link Columns */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-foreground mb-4">{category}</h3>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-white mb-4">{category}</h3>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <a href="#" className="text-sm text-[#8898AA] hover:text-white transition-colors">
                       {link}
                     </a>
                   </li>
@@ -45,15 +40,13 @@ export default function FooterSection() {
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">
-            © 2026 FlutterStack. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            {["Twitter", "GitHub", "Discord", "LinkedIn"].map((social) => (
-              <a key={social} href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-                {social}
+        {/* Bottom */}
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-[#8898AA]">© 2026 FlutterStack, Inc.</p>
+          <div className="flex flex-wrap items-center gap-6">
+            {["Privacy & Terms", "Privacy Center", "Cookie Settings", "Do Not Sell"].map((item) => (
+              <a key={item} href="#" className="text-xs text-[#8898AA] hover:text-white transition-colors">
+                {item}
               </a>
             ))}
           </div>

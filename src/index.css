@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sohne:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,74 +8,74 @@
 @layer base {
   :root {
     --font-inter: 'Inter', sans-serif;
-    --background: 220 20% 97%;
-    --foreground: 230 25% 10%;
+    --background: 0 0% 100%;
+    --foreground: 228 39% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 230 25% 10%;
+    --card-foreground: 228 39% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 230 25% 10%;
-    --primary: 250 76% 58%;
+    --popover-foreground: 228 39% 12%;
+    --primary: 246 70% 57%;
     --primary-foreground: 0 0% 100%;
     --secondary: 220 14% 96%;
-    --secondary-foreground: 230 25% 10%;
+    --secondary-foreground: 228 39% 12%;
     --muted: 220 14% 96%;
     --muted-foreground: 220 10% 46%;
-    --accent: 250 76% 95%;
-    --accent-foreground: 250 76% 40%;
+    --accent: 246 70% 96%;
+    --accent-foreground: 246 70% 40%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 250 76% 58%;
-    --chart-1: 250 76% 58%;
+    --ring: 246 70% 57%;
+    --chart-1: 246 70% 57%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.75rem;
+    --radius: 0.5rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 250 76% 58%;
+    --sidebar-primary: 246 70% 57%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 250 76% 58%;
+    --sidebar-ring: 246 70% 57%;
   }
 
   .dark {
-    --background: 230 25% 6%;
+    --background: 228 39% 8%;
     --foreground: 0 0% 95%;
-    --card: 230 20% 10%;
+    --card: 228 30% 12%;
     --card-foreground: 0 0% 95%;
-    --popover: 230 20% 10%;
+    --popover: 228 30% 12%;
     --popover-foreground: 0 0% 95%;
-    --primary: 250 76% 62%;
+    --primary: 246 70% 62%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 230 20% 14%;
+    --secondary: 228 20% 16%;
     --secondary-foreground: 0 0% 95%;
-    --muted: 230 20% 14%;
+    --muted: 228 20% 16%;
     --muted-foreground: 220 10% 55%;
-    --accent: 250 76% 15%;
-    --accent-foreground: 250 76% 75%;
+    --accent: 246 70% 15%;
+    --accent-foreground: 246 70% 75%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 230 15% 18%;
-    --input: 230 15% 18%;
-    --ring: 250 76% 62%;
+    --border: 228 15% 20%;
+    --input: 228 15% 20%;
+    --ring: 246 70% 62%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 230 25% 6%;
+    --sidebar-background: 228 39% 8%;
     --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 250 76% 62%;
+    --sidebar-primary: 246 70% 62%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 230 20% 14%;
+    --sidebar-accent: 228 20% 16%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 230 15% 18%;
-    --sidebar-ring: 250 76% 62%;
+    --sidebar-border: 228 15% 20%;
+    --sidebar-ring: 246 70% 62%;
   }
 }
 
@@ -87,24 +88,28 @@
   }
 }
 
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  50% { transform: translateY(-12px); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-ticker {
+  animation: ticker 30s linear infinite;
 }
 
 .animate-float {
@@ -113,4 +118,20 @@
 
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.stripe-gradient-text {
+  background: linear-gradient(135deg, #0A2540 0%, #635BFF 50%, #7B68EE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stripe-hero-gradient {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--background)) 0%,
+    hsl(var(--background)) 45%,
+    transparent 100%
+  );
 }

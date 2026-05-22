@@ -1,105 +1,93 @@
 import React from 'react';
 import { motion } from "framer-motion";
-import { 
-  CreditCard, Shield, Database, Wifi, 
-  Smartphone, Globe, Layers, Terminal 
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-const features = [
+const products = [
   {
-    icon: CreditCard,
-    title: "Payments",
-    description: "Accept payments globally with our pre-built Flutter widgets. Stripe, Apple Pay, and Google Pay out of the box.",
-    gradient: "from-blue-500 to-cyan-400",
+    tag: "Payments",
+    title: "Accept and optimize payments globally — online and in person",
+    description: "A complete payments platform engineered for the most demanding businesses.",
+    link: "Explore Payments",
+    bg: "bg-[#F0EFFF]",
+    accent: "text-[#635BFF]",
   },
   {
-    icon: Shield,
-    title: "Authentication",
-    description: "Social logins, magic links, and biometric auth. Fully integrated with Flutter's native security layer.",
-    gradient: "from-green-500 to-emerald-400",
+    tag: "Billing",
+    title: "Flexible subscription and usage billing for SaaS",
+    description: "Handle subscriptions, metered billing, multi-currency, and revenue recognition automatically.",
+    link: "Explore Billing",
+    bg: "bg-[#F0F9FF]",
+    accent: "text-[#1DA1F2]",
   },
   {
-    icon: Database,
-    title: "Real-time Database",
-    description: "Firestore-compatible real-time sync with offline support. Your data, everywhere, instantly.",
-    gradient: "from-purple-500 to-pink-400",
+    tag: "Connect",
+    title: "Embed payments and financial services in your platform",
+    description: "The fastest way to embed payments, payouts, and financial services for your marketplace or SaaS.",
+    link: "Explore Connect",
+    bg: "bg-[#F0FFF4]",
+    accent: "text-[#059669]",
   },
   {
-    icon: Wifi,
-    title: "Edge Functions",
-    description: "Deploy serverless functions at the edge. Sub-50ms latency globally with automatic scaling.",
-    gradient: "from-orange-500 to-red-400",
+    tag: "Radar",
+    title: "Machine learning fraud prevention",
+    description: "Block fraud before it costs you. Adaptive fraud models trained on billions of data points.",
+    link: "Explore Radar",
+    bg: "bg-[#FFF7F0]",
+    accent: "text-[#F97316]",
   },
   {
-    icon: Smartphone,
-    title: "Push Notifications",
-    description: "Cross-platform push notifications with rich media. Segment, target, and automate campaigns.",
-    gradient: "from-primary to-purple-400",
+    tag: "Issuing",
+    title: "Create cards instantly for your platform users",
+    description: "Issue virtual or physical cards to your users in minutes. Full spend controls and real-time authorizations.",
+    link: "Explore Issuing",
+    bg: "bg-[#FDF0FF]",
+    accent: "text-[#9333EA]",
   },
   {
-    icon: Globe,
-    title: "CDN & Hosting",
-    description: "Global CDN with automatic image optimization. Deploy Flutter Web apps with zero configuration.",
-    gradient: "from-teal-500 to-blue-400",
-  },
-  {
-    icon: Layers,
-    title: "State Management",
-    description: "Built-in reactive state with automatic persistence. No more boilerplate, just clean architecture.",
-    gradient: "from-pink-500 to-rose-400",
-  },
-  {
-    icon: Terminal,
-    title: "CLI & DevTools",
-    description: "Powerful CLI for scaffolding, testing, and deployment. Integrated debugging dashboard.",
-    gradient: "from-slate-600 to-slate-400",
+    tag: "Terminal",
+    title: "In-person payments for any business",
+    description: "Accept in-person payments at the point of sale. Pre-certified readers, seamless SDK integration.",
+    link: "Explore Terminal",
+    bg: "bg-[#F0F4FF]",
+    accent: "text-[#4F46E5]",
   },
 ];
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-32 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/30 to-transparent" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
+    <section id="features" className="py-24 bg-[#F6F9FC] border-t border-gray-100">
+      <div className="max-w-[1200px] mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="mb-14"
         >
-          <span className="text-xs font-bold tracking-widest uppercase text-primary">Everything you need</span>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mt-4 mb-6">
-            One SDK.{" "}
-            <span className="bg-gradient-to-r from-primary to-purple-500 bg-clip-text text-transparent">
-              Every feature.
-            </span>
+          <h2 className="text-[36px] sm:text-[44px] font-extrabold text-[#0A2540] leading-tight tracking-tight">
+            Everything you need to build great financial products.
           </h2>
-          <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
-            Stop piecing together dozens of services. FlutterStack gives you 
-            a unified, type-safe SDK for the entire backend.
+          <p className="text-lg text-[#425466] mt-3 max-w-2xl">
+            FlutterStack provides a modular set of tools — use the pieces you need, leave the rest.
           </p>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {features.map((feature, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {products.map((p, i) => (
             <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
+              key={p.tag}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+              className="bg-white border border-gray-100 rounded-2xl p-7 hover:shadow-md transition-shadow group"
             >
-              <div className="group relative bg-card border border-border rounded-2xl p-6 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500 h-full">
-                <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <feature.icon className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-base font-bold mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-              </div>
+              <div className={`text-xs font-bold uppercase tracking-widest ${p.accent} mb-3`}>{p.tag}</div>
+              <h3 className="text-[17px] font-bold text-[#0A2540] leading-snug mb-3">{p.title}</h3>
+              <p className="text-sm text-[#425466] leading-relaxed mb-5">{p.description}</p>
+              <a href="#" className={`flex items-center gap-1.5 text-sm font-semibold ${p.accent} hover:underline`}>
+                {p.link} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </a>
             </motion.div>
           ))}
         </div>

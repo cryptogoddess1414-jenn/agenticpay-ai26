@@ -35,19 +35,22 @@ export function usePlanLimits() {
 
   const fetchPlan = useCallback(async () => {
     setLoading(true);
-    const res = await base44.functions.invoke('billing', { action: 'get_subscription' });
-    const sub = res.data?.subscription;
+    try {
+      const res = await base44.functions.invoke('billing', { action: 'get_subscription' });
+      const sub = res.data?.subscription;
 
-    if (!sub || sub.status !== 'active') {
+      if (!sub || sub.status !== 'active') {
+        setPlan('free');
+      } else {
+        const item = sub.items?.data?.[0];
+        const productName = item?.price?.product?.name?.toLowerCase() || '';
+        if (productName.includes('enterprise')) setPlan('enterprise');
+        else if (productName.includes('pro')) setPlan('pro');
+        else if (productName.includes('starter')) setPlan('starter');
+        else setPlan('free');
+      }
+    } catch {
       setPlan('free');
-    } else {
-      // Derive plan key from the subscription's price product metadata or nickname
-      const item = sub.items?.data?.[0];
-      const productName = item?.price?.product?.name?.toLowerCase() || '';
-      if (productName.includes('enterprise')) setPlan('enterprise');
-      else if (productName.includes('pro')) setPlan('pro');
-      else if (productName.includes('starter')) setPlan('starter');
-      else setPlan('free');
     }
     setLoading(false);
   }, []);

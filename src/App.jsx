@@ -9,6 +9,7 @@ import Landing from './pages/Landing';
 import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminUserDetail from './pages/AdminUserDetail';
+import Billing from './pages/Billing';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -41,6 +42,7 @@ const AuthenticatedApp = () => {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/admin/users/:userId" element={<AdminUserDetail />} />
+      <Route path="/billing" element={<Billing />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

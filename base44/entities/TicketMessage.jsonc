@@ -1,0 +1,28 @@
+{
+  "name": "TicketMessage",
+  "type": "object",
+  "properties": {
+    "ticket_id": {
+      "type": "string",
+      "description": "Parent ticket ID"
+    },
+    "sender_email": {
+      "type": "string"
+    },
+    "sender_name": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "is_admin": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "ticket_id",
+    "sender_email",
+    "message"
+  ]
+}

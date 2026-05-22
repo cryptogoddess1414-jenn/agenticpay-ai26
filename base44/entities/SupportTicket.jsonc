@@ -1,0 +1,64 @@
+{
+  "name": "SupportTicket",
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "Ticket subject"
+    },
+    "description": {
+      "type": "string",
+      "description": "Initial issue description"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "in_progress",
+        "resolved",
+        "closed"
+      ],
+      "default": "open"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "urgent"
+      ],
+      "default": "medium"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "billing",
+        "technical",
+        "account",
+        "general"
+      ],
+      "default": "general"
+    },
+    "user_email": {
+      "type": "string",
+      "description": "Submitting user email"
+    },
+    "user_name": {
+      "type": "string"
+    },
+    "assigned_to": {
+      "type": "string",
+      "description": "Admin email assigned to ticket"
+    },
+    "resolved_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "subject",
+    "description",
+    "user_email"
+  ]
+}

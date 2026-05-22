@@ -57,7 +57,8 @@ Make a smart refund decision. High-CLV, long-tenure customers should generally b
   };
 
   if (!transaction) return null;
-  const { customer, amount, riskScore, riskReason, id } = transaction;
+  const { customer, amount, riskScore, riskReason } = transaction;
+  const txId = transaction.id;
   const verdictCfg = analysis ? VERDICT_CONFIG[analysis.verdict] : null;
   const VerdictIcon = verdictCfg?.icon;
 
@@ -78,7 +79,7 @@ Make a smart refund decision. High-CLV, long-tenure customers should generally b
               </div>
               <div>
                 <p className="text-sm font-bold text-white">Smart Approval</p>
-                <p className="text-[10px] text-[#8898AA]">AgenticPay AI · {id}</p>
+                <p className="text-[10px] text-[#8898AA]">AgenticPay AI · {txId}</p>
               </div>
             </div>
             <button onClick={onClose} className="p-1.5 rounded-lg hover:bg-white/10 text-[#8898AA] hover:text-white transition-colors">

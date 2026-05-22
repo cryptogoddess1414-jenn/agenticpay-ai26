@@ -16,6 +16,7 @@ import ApiExplorer from './pages/ApiExplorer';
 import ApiDocs from './pages/ApiDocs';
 import ApiKeys from './pages/ApiKeys';
 import IntegrationGuide from './pages/IntegrationGuide';
+import Analytics from './pages/Analytics';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -55,6 +56,7 @@ const AuthenticatedApp = () => {
       <Route path="/api-docs" element={<ApiDocs />} />
       <Route path="/api-keys" element={<ApiKeys />} />
       <Route path="/integration" element={<IntegrationGuide />} />
+      <Route path="/analytics" element={<Analytics />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

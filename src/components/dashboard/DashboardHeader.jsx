@@ -1,6 +1,7 @@
 import React from 'react';
-import { RefreshCw, Activity } from 'lucide-react';
-import { useDashboardData } from './useDashboardData';
+import { Activity } from 'lucide-react';
+import { useDashboard } from './DashboardContext';
+import ExportButton from './ExportButton';
 
 // We use a context pattern via prop-passing; this component is self-contained for the header.
 export default function DashboardHeader() {

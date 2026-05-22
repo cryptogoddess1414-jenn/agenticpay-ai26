@@ -6,7 +6,8 @@ import AdminPlanChart from '../components/admin/AdminPlanChart';
 import AdminUsersTable from '../components/admin/AdminUsersTable';
 import AdminActivityFeed from '../components/admin/AdminActivityFeed';
 import MrrForecastChart from '../components/admin/MrrForecastChart';
-import { LayoutDashboard, RefreshCw } from 'lucide-react';
+import FeatureUsageTab from '../components/admin/FeatureUsageTab';
+import { LayoutDashboard, RefreshCw, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function AdminDashboard() {
@@ -15,6 +16,7 @@ export default function AdminDashboard() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [lastRefresh, setLastRefresh] = useState(new Date());
+  const [activeTab, setActiveTab] = useState('overview');
 
   const fetchData = async () => {
     setLoading(true);
@@ -61,32 +63,61 @@ export default function AdminDashboard() {
         </div>
       </div>
 
+      {/* Tabs */}
+      <div className="border-b border-gray-200 bg-white px-6">
+        <div className="max-w-7xl mx-auto flex gap-1">
+          {[
+            { key: 'overview', label: 'Overview', icon: LayoutDashboard },
+            { key: 'feature_usage', label: 'Feature Usage', icon: Zap },
+          ].map(tab => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors -mb-px ${
+                activeTab === tab.key
+                  ? 'border-[#635BFF] text-[#635BFF]'
+                  : 'border-transparent text-gray-400 hover:text-gray-600'
+              }`}
+            >
+              <tab.icon className="w-3.5 h-3.5" />
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 py-6 space-y-6">
-        {/* Stat Cards */}
-        <AdminStatCards subscriptions={subscriptions} transactions={transactions} users={users} loading={loading} />
+        {activeTab === 'overview' && (
+          <>
+            {/* Stat Cards */}
+            <AdminStatCards subscriptions={subscriptions} transactions={transactions} users={users} loading={loading} />
 
-        {/* Charts Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <AdminRevenueChart transactions={transactions} loading={loading} />
-          </div>
-          <div>
-            <AdminPlanChart subscriptions={subscriptions} loading={loading} />
-          </div>
-        </div>
+            {/* Charts Row */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2">
+                <AdminRevenueChart transactions={transactions} loading={loading} />
+              </div>
+              <div>
+                <AdminPlanChart subscriptions={subscriptions} loading={loading} />
+              </div>
+            </div>
 
-        {/* MRR Forecast */}
-        <MrrForecastChart subscriptions={subscriptions} transactions={transactions} loading={loading} />
+            {/* MRR Forecast */}
+            <MrrForecastChart subscriptions={subscriptions} transactions={transactions} loading={loading} />
 
-        {/* Bottom Row */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
-            <AdminUsersTable users={users} subscriptions={subscriptions} loading={loading} />
-          </div>
-          <div>
-            <AdminActivityFeed transactions={transactions} subscriptions={subscriptions} loading={loading} />
-          </div>
-        </div>
+            {/* Bottom Row */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2">
+                <AdminUsersTable users={users} subscriptions={subscriptions} loading={loading} />
+              </div>
+              <div>
+                <AdminActivityFeed transactions={transactions} subscriptions={subscriptions} loading={loading} />
+              </div>
+            </div>
+          </>
+        )}
+
+        {activeTab === 'feature_usage' && <FeatureUsageTab />}
       </div>
     </div>
   );

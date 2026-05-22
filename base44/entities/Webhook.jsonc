@@ -1,0 +1,49 @@
+{
+  "name": "Webhook",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Friendly name for the webhook"
+    },
+    "url": {
+      "type": "string",
+      "description": "Destination URL to POST events to"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of subscribed event types"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "failing"
+      ],
+      "default": "active"
+    },
+    "secret": {
+      "type": "string",
+      "description": "HMAC signing secret for verifying webhook payloads"
+    },
+    "last_triggered_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_status_code": {
+      "type": "number"
+    },
+    "failure_count": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "name",
+    "url"
+  ]
+}

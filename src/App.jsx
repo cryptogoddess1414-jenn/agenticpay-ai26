@@ -11,6 +11,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminUserDetail from './pages/AdminUserDetail';
 import Support from './pages/Support';
 import AdminSupport from './pages/AdminSupport';
+import Webhooks from './pages/Webhooks';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -45,6 +46,7 @@ const AuthenticatedApp = () => {
       <Route path="/admin/users/:userId" element={<AdminUserDetail />} />
       <Route path="/support" element={<Support />} />
       <Route path="/admin/support" element={<AdminSupport />} />
+      <Route path="/webhooks" element={<Webhooks />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

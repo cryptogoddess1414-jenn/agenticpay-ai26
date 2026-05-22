@@ -8,6 +8,7 @@ import CustomerStoriesSection from '../components/landing/CustomerStoriesSection
 import PricingSection from '../components/landing/PricingSection';
 import CTASection from '../components/landing/CTASection';
 import FooterSection from '../components/landing/FooterSection';
+import OpenSourceSection from '../components/landing/OpenSourceSection';
 
 export default function Landing() {
   return (
@@ -16,6 +17,7 @@ export default function Landing() {
       <HeroSection />
       <FlexibleSolutionsSection />
       <FeaturesSection />
+      <OpenSourceSection />
       <StatsSection />
       <CustomerStoriesSection />
       <PricingSection />

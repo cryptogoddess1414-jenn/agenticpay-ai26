@@ -68,7 +68,7 @@ export default function FeaturesSection() {
             Everything you need to build great financial products.
           </h2>
           <p className="text-lg text-[#425466] mt-3 max-w-2xl">
-            FlutterStack provides a modular set of tools — use the pieces you need, leave the rest.
+            AgenticPay AI provides a modular set of tools — use the pieces you need, leave the rest.
           </p>
         </motion.div>
 

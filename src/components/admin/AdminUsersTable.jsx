@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, ChevronRight } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
+import { useNavigate } from 'react-router-dom';
 
 const STATUS_COLORS = {
   active: 'bg-emerald-100 text-emerald-700',
@@ -15,6 +15,7 @@ const STATUS_COLORS = {
 
 export default function AdminUsersTable({ users, subscriptions, loading }) {
   const [search, setSearch] = useState('');
+  const navigate = useNavigate();
 
   const subMap = subscriptions.reduce((acc, s) => {
     if (!acc[s.user_email]) acc[s.user_email] = s;
@@ -61,6 +62,7 @@ export default function AdminUsersTable({ users, subscriptions, loading }) {
                 <th className="text-left py-2 pr-4 font-semibold text-gray-400 uppercase tracking-wide">Plan</th>
                 <th className="text-left py-2 pr-4 font-semibold text-gray-400 uppercase tracking-wide">Status</th>
                 <th className="text-right py-2 font-semibold text-gray-400 uppercase tracking-wide">MRR</th>
+                <th className="py-2 w-6"></th>
               </tr>
             </thead>
             <tbody>
@@ -75,7 +77,7 @@ export default function AdminUsersTable({ users, subscriptions, loading }) {
                   const plan = sub?.plan ?? '—';
                   const mrr = sub?.mrr ?? 0;
                   return (
-                    <tr key={u.id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                    <tr key={u.id} onClick={() => navigate(`/admin/users/${u.id}`)} className="border-b border-gray-50 hover:bg-gray-50 transition-colors cursor-pointer">
                       <td className="py-2.5 pr-4">
                         <div className="flex items-center gap-2">
                           <div className="w-6 h-6 rounded-full bg-[#635BFF]/10 flex items-center justify-center text-[10px] font-bold text-[#635BFF]">
@@ -95,6 +97,9 @@ export default function AdminUsersTable({ users, subscriptions, loading }) {
                       </td>
                       <td className="py-2.5 text-right font-semibold text-[#0A2540]">
                         {mrr > 0 ? `$${mrr}` : '—'}
+                      </td>
+                      <td className="py-2.5 pl-2">
+                        <ChevronRight className="w-3.5 h-3.5 text-gray-300" />
                       </td>
                     </tr>
                   );

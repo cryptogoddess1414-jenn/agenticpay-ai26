@@ -12,17 +12,17 @@
     },
     "message": {
       "type": "string",
-      "description": "Notification body"
+      "description": "Notification body text"
     },
     "type": {
       "type": "string",
       "enum": [
-        "system",
-        "subscription",
-        "activity",
-        "alert"
+        "info",
+        "success",
+        "warning",
+        "error"
       ],
-      "default": "system"
+      "default": "info"
     },
     "is_read": {
       "type": "boolean",
@@ -30,13 +30,11 @@
     },
     "link": {
       "type": "string",
-      "description": "Optional action URL"
+      "description": "Optional URL to navigate to"
     }
   },
   "required": [
     "user_email",
-    "title",
-    "message",
-    "type"
+    "title"
   ]
 }

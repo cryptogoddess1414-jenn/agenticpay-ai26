@@ -1,0 +1,31 @@
+{
+  "name": "FeatureEvent",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "User who triggered the event"
+    },
+    "feature": {
+      "type": "string",
+      "description": "Feature name (e.g. 'api_call', 'checkout', 'billing_portal')"
+    },
+    "action": {
+      "type": "string",
+      "description": "Action performed (e.g. 'viewed', 'clicked', 'submitted')"
+    },
+    "page": {
+      "type": "string",
+      "description": "Page where the event occurred"
+    },
+    "metadata": {
+      "type": "string",
+      "description": "Optional JSON string with extra context"
+    }
+  },
+  "required": [
+    "user_email",
+    "feature",
+    "action"
+  ]
+}

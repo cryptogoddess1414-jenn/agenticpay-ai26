@@ -14,6 +14,7 @@ import AdminSupport from './pages/AdminSupport';
 import Webhooks from './pages/Webhooks';
 import ApiExplorer from './pages/ApiExplorer';
 import ApiDocs from './pages/ApiDocs';
+import ApiKeys from './pages/ApiKeys';
 // Add page imports here
 
 const AuthenticatedApp = () => {
@@ -51,6 +52,7 @@ const AuthenticatedApp = () => {
       <Route path="/webhooks" element={<Webhooks />} />
       <Route path="/api-explorer" element={<ApiExplorer />} />
       <Route path="/api-docs" element={<ApiDocs />} />
+      <Route path="/api-keys" element={<ApiKeys />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

@@ -1,0 +1,59 @@
+{
+  "name": "ApiKey",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Owner of the API key"
+    },
+    "name": {
+      "type": "string",
+      "description": "Friendly label for the key"
+    },
+    "key_prefix": {
+      "type": "string",
+      "description": "First 8 chars shown in UI (e.g. sk_live_ab)"
+    },
+    "key_hash": {
+      "type": "string",
+      "description": "SHA-256 hash of the full key for verification"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "live",
+        "test"
+      ],
+      "default": "test"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "revoked",
+        "expired"
+      ],
+      "default": "active"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date",
+      "description": "Optional expiration date"
+    },
+    "last_used_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "total_requests": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "required": [
+    "user_email",
+    "name",
+    "key_prefix",
+    "key_hash",
+    "mode"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "ApiKeyLog",
+  "type": "object",
+  "properties": {
+    "api_key_id": {
+      "type": "string",
+      "description": "Reference to the ApiKey record"
+    },
+    "user_email": {
+      "type": "string"
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "API endpoint called"
+    },
+    "method": {
+      "type": "string",
+      "enum": [
+        "GET",
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE"
+      ]
+    },
+    "status_code": {
+      "type": "number"
+    },
+    "latency_ms": {
+      "type": "number"
+    },
+    "ip_address": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "api_key_id",
+    "user_email",
+    "endpoint",
+    "method",
+    "status_code"
+  ]
+}

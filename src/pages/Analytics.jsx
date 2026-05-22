@@ -5,6 +5,8 @@ import AiSummaryCard from '../components/analytics/AiSummaryCard';
 import PaymentTrendsChart from '../components/analytics/PaymentTrendsChart';
 import ChurnPredictionPanel from '../components/analytics/ChurnPredictionPanel';
 import AnalyticsMetrics from '../components/analytics/AnalyticsMetrics';
+import AiChatSidebar from '../components/chat/AiChatSidebar';
+import AiChatButton from '../components/chat/AiChatButton';
 import { BarChart2, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -39,6 +41,7 @@ function generateChurnData(subs = 120) {
 }
 
 export default function Analytics() {
+  const [chatOpen, setChatOpen] = useState(false);
   const [paymentData] = useState(() => generatePaymentData());
   const [churnData] = useState(() => generateChurnData());
   const [summary, setSummary] = useState(null);
@@ -152,6 +155,8 @@ Write 3-4 sentences in a professional but direct tone. Highlight the most import
           </div>
 
         </div>
+        <AiChatButton onClick={() => setChatOpen(true)} />
+        <AiChatSidebar open={chatOpen} onClose={() => setChatOpen(false)} />
       </div>
     </div>
   );

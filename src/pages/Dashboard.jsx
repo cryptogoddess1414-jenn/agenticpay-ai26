@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/landing/Navbar';
 import DashboardHeader from '../components/dashboard/DashboardHeader';
 import MetricCards from '../components/dashboard/MetricCards';
@@ -7,8 +7,12 @@ import RevenueChart from '../components/dashboard/RevenueChart';
 import ErrorRateChart from '../components/dashboard/ErrorRateChart';
 import TopEndpointsTable from '../components/dashboard/TopEndpointsTable';
 import { DashboardProvider } from '../components/dashboard/DashboardContext';
+import AiChatSidebar from '../components/chat/AiChatSidebar';
+import AiChatButton from '../components/chat/AiChatButton';
 
 export default function Dashboard() {
+  const [chatOpen, setChatOpen] = useState(false);
+
   return (
     <DashboardProvider>
       <div className="min-h-screen bg-[#F6F9FC]">
@@ -35,6 +39,8 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+        <AiChatButton onClick={() => setChatOpen(true)} />
+        <AiChatSidebar open={chatOpen} onClose={() => setChatOpen(false)} />
       </div>
     </DashboardProvider>
   );

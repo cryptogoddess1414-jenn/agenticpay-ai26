@@ -3,8 +3,14 @@ import { Activity } from 'lucide-react';
 import { useDashboard } from './DashboardContext';
 import ExportButton from './ExportButton';
 
-// We use a context pattern via prop-passing; this component is self-contained for the header.
 export default function DashboardHeader() {
+  const { hourly, endpoints } = useDashboard();
+
+  const exportData = [
+    ...hourly.map(d => ({ type: 'api_usage', time: d.time, requests: d.requests, errors: d.errors, latency_ms: d.latency })),
+    ...endpoints.map(e => ({ type: 'endpoint', path: e.path, method: e.method, calls: e.calls, p99_ms: e.p99, error_rate: e.errorRate })),
+  ];
+
   return (
     <div className="flex items-center justify-between mb-6">
       <div>
@@ -24,6 +30,11 @@ export default function DashboardHeader() {
           <option>Last 7 days</option>
           <option>Last 30 days</option>
         </select>
+        <ExportButton
+          data={exportData}
+          title="API Analytics Report"
+          filename="api-analytics"
+        />
       </div>
     </div>
   );

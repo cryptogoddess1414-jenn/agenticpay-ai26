@@ -1,0 +1,81 @@
+{
+  "name": "RefundRule",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable rule name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the rule intent"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the rule is currently enforced"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "auto_approve",
+        "auto_deny",
+        "require_review"
+      ],
+      "description": "Action to take when rule matches"
+    },
+    "priority": {
+      "type": "number",
+      "default": 10,
+      "description": "Lower number = evaluated first"
+    },
+    "clv_min": {
+      "type": "number",
+      "description": "Minimum customer CLV (USD) to match"
+    },
+    "clv_max": {
+      "type": "number",
+      "description": "Maximum customer CLV (USD) to match"
+    },
+    "risk_score_max": {
+      "type": "number",
+      "description": "Maximum risk score (0-1) to match"
+    },
+    "risk_score_min": {
+      "type": "number",
+      "description": "Minimum risk score (0-1) to match"
+    },
+    "amount_max": {
+      "type": "number",
+      "description": "Maximum refund amount (USD) to match"
+    },
+    "amount_min": {
+      "type": "number",
+      "description": "Minimum refund amount (USD) to match"
+    },
+    "plans": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Subscription plans this rule applies to (empty = all)"
+    },
+    "tenure_min_months": {
+      "type": "number",
+      "description": "Minimum account tenure in months to match"
+    },
+    "match_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of times this rule has fired"
+    },
+    "last_matched_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "name",
+    "action"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "RefundAuditLog",
+  "type": "object",
+  "properties": {
+    "transaction_id": {
+      "type": "string",
+      "description": "Stripe charge or transaction ID"
+    },
+    "customer_email": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Refund amount in USD"
+    },
+    "risk_score": {
+      "type": "number"
+    },
+    "clv": {
+      "type": "number"
+    },
+    "plan": {
+      "type": "string"
+    },
+    "rule_id": {
+      "type": "string",
+      "description": "ID of the matched RefundRule, if any"
+    },
+    "rule_name": {
+      "type": "string"
+    },
+    "action_taken": {
+      "type": "string",
+      "enum": [
+        "auto_approve",
+        "auto_deny",
+        "require_review",
+        "no_rule_match"
+      ]
+    },
+    "stripe_refund_id": {
+      "type": "string",
+      "description": "Stripe refund object ID if auto-approved"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "webhook",
+        "manual"
+      ],
+      "default": "webhook"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "transaction_id",
+    "action_taken"
+  ]
+}

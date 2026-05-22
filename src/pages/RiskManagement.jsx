@@ -3,6 +3,8 @@ import Navbar from '../components/landing/Navbar';
 import RiskMetricsBar from '../components/risk/RiskMetricsBar';
 import TransactionRiskTable from '../components/risk/TransactionRiskTable';
 import SmartApprovalModal from '../components/risk/SmartApprovalModal';
+import RefundRuleEngine from '../components/risk/RefundRuleEngine';
+import RefundAuditLogTable from '../components/risk/RefundAuditLogTable';
 import AiChatSidebar from '../components/chat/AiChatSidebar';
 import AiChatButton from '../components/chat/AiChatButton';
 import { generateTransactions } from '../lib/risk-data';
@@ -63,6 +65,16 @@ export default function RiskManagement() {
               transactions={transactions}
               onSmartApprove={handleSmartApprove}
             />
+          </div>
+
+          {/* Refund Rule Engine */}
+          <div className="mt-6">
+            <RefundRuleEngine />
+          </div>
+
+          {/* Audit Log */}
+          <div className="mt-6">
+            <RefundAuditLogTable />
           </div>
 
         </div>

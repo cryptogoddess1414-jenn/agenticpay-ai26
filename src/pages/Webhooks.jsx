@@ -4,6 +4,7 @@ import Navbar from '../components/landing/Navbar';
 import WebhookCard from '../components/webhooks/WebhookCard';
 import WebhookForm from '../components/webhooks/WebhookForm';
 import WebhookTestModal from '../components/webhooks/WebhookTestModal';
+import WebhookLogsModal from '../components/webhooks/WebhookLogsModal';
 import { Button } from '@/components/ui/button';
 import { Plus, Webhook, BookOpen, X } from 'lucide-react';
 
@@ -14,6 +15,7 @@ export default function Webhooks() {
   const [showForm, setShowForm] = useState(false);
   const [editingWebhook, setEditingWebhook] = useState(null);
   const [testingWebhook, setTestingWebhook] = useState(null);
+  const [logsWebhook, setLogsWebhook] = useState(null);
 
   const fetchWebhooks = async () => {
     const data = await base44.entities.Webhook.list('-created_date');
@@ -145,6 +147,7 @@ export default function Webhooks() {
                   onDelete={handleDelete}
                   onToggle={() => handleToggle(webhook)}
                   onTest={setTestingWebhook}
+                  onViewLogs={setLogsWebhook}
                 />
               ))}
             </div>
@@ -156,6 +159,13 @@ export default function Webhooks() {
         <WebhookTestModal
           webhook={testingWebhook}
           onClose={() => { setTestingWebhook(null); fetchWebhooks(); }}
+        />
+      )}
+
+      {logsWebhook && (
+        <WebhookLogsModal
+          webhook={logsWebhook}
+          onClose={() => setLogsWebhook(null)}
         />
       )}
     </div>

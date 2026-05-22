@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Send, Pencil, Trash2, ToggleLeft, ToggleRight, CheckCircle2, XCircle, AlertTriangle, Clock } from 'lucide-react';
+import { Send, Pencil, Trash2, ToggleLeft, ToggleRight, CheckCircle2, XCircle, AlertTriangle, Clock, ScrollText } from 'lucide-react';
 
 const STATUS_CONFIG = {
   active:   { label: 'Active',   color: 'text-green-600', bg: 'bg-green-50 border-green-200',  Icon: CheckCircle2 },
@@ -8,7 +8,7 @@ const STATUS_CONFIG = {
   failing:  { label: 'Failing',  color: 'text-red-500',   bg: 'bg-red-50 border-red-200',      Icon: AlertTriangle },
 };
 
-export default function WebhookCard({ webhook, onEdit, onDelete, onToggle, onTest }) {
+export default function WebhookCard({ webhook, onEdit, onDelete, onToggle, onTest, onViewLogs }) {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const cfg = STATUS_CONFIG[webhook.status] || STATUS_CONFIG.inactive;
 
@@ -58,6 +58,11 @@ export default function WebhookCard({ webhook, onEdit, onDelete, onToggle, onTes
               ? <ToggleRight className="w-4 h-4 text-[#635BFF]" />
               : <ToggleLeft className="w-4 h-4" />
             }
+          </button>
+          <button onClick={() => onViewLogs(webhook)}
+            title="View Logs"
+            className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-[#0A2540] transition-colors">
+            <ScrollText className="w-4 h-4" />
           </button>
           <button onClick={() => onTest(webhook)}
             title="Test"

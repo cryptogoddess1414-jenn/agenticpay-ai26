@@ -1,0 +1,49 @@
+{
+  "name": "WebhookDeliveryLog",
+  "type": "object",
+  "properties": {
+    "webhook_id": {
+      "type": "string",
+      "description": "ID of the Webhook record"
+    },
+    "event_type": {
+      "type": "string",
+      "description": "The event type that was dispatched"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failed",
+        "timeout"
+      ],
+      "default": "failed"
+    },
+    "http_status_code": {
+      "type": "number",
+      "description": "HTTP status code returned by the endpoint"
+    },
+    "latency_ms": {
+      "type": "number",
+      "description": "Round-trip delivery time in milliseconds"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error message if delivery failed"
+    },
+    "response_body": {
+      "type": "string",
+      "description": "First 500 chars of the response body"
+    },
+    "is_test": {
+      "type": "boolean",
+      "default": false,
+      "description": "True if this was a manual test delivery"
+    }
+  },
+  "required": [
+    "webhook_id",
+    "event_type",
+    "status"
+  ]
+}

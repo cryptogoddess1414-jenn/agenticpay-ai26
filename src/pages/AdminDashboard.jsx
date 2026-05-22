@@ -5,6 +5,7 @@ import AdminRevenueChart from '../components/admin/AdminRevenueChart';
 import AdminPlanChart from '../components/admin/AdminPlanChart';
 import AdminUsersTable from '../components/admin/AdminUsersTable';
 import AdminActivityFeed from '../components/admin/AdminActivityFeed';
+import MrrForecastChart from '../components/admin/MrrForecastChart';
 import { LayoutDashboard, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -73,6 +74,9 @@ export default function AdminDashboard() {
             <AdminPlanChart subscriptions={subscriptions} loading={loading} />
           </div>
         </div>
+
+        {/* MRR Forecast */}
+        <MrrForecastChart subscriptions={subscriptions} transactions={transactions} loading={loading} />
 
         {/* Bottom Row */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
